@@ -22,22 +22,22 @@ public class Mobile_Web_Test {
 
         UiAutomator2Options options = new UiAutomator2Options();
 
-        // ✅ Mandatory
+        //  Mandatory
         options.setPlatformName("Android");
         options.setAutomationName("UiAutomator2");
         options.setDeviceName("OnePlus CPH2381");
         options.setPlatformVersion("14");
 
-        // ✅ Google Chrome (DO NOT CHANGE)
+        //  Google Chrome (DO NOT CHANGE)
         options.setCapability("Browser", "Chrome");
 
-        // 🔥 Android 14 FIX (DO NOT CHANGE)
+        //  Android 14 FIX (DO NOT CHANGE)
         options.setNoReset(true);
         options.setCapability("fullReset", false);
         options.setCapability("skipChromeReset", true);
         options.setCapability("skipUnlock", true);
 
-        // 🔥 Chromedriver auto handling (DO NOT CHANGE)
+        //  Chromedriver auto handling (DO NOT CHANGE)
         options.setCapability("chromedriverAutodownload", true);
         options.setCapability(
                 "chromedriverChromeMappingFile",
@@ -78,4 +78,5 @@ public class Mobile_Web_Test {
             driver.quit();
         }
     }
+
 }
