@@ -27,9 +27,9 @@ public class BaseAppTest extends BaseApp {
             wait.until(ExpectedConditions.elementToBeClickable(
                     AppiumBy.accessibilityId("test-LOGIN"))).click();
 
-            System.out.println("✅ Login successful");
+            System.out.println(" Login successful");
         } catch (Exception e) {
-            System.out.println("ℹ️ Already logged in or login not required");
+            System.out.println(" Already logged in or login not required");
         }
 
         // ================= SELECT FIRST PRODUCT =================
@@ -43,7 +43,7 @@ public class BaseAppTest extends BaseApp {
                         ".scrollIntoView(new UiSelector().description(\"test-ADD TO CART\"))"
                 ))).click();
 
-        System.out.println("✅ Product added to cart");
+        System.out.println(" Product added to cart");
 
         // ================= OPEN CART =================
         wait.until(ExpectedConditions.elementToBeClickable(
@@ -55,6 +55,7 @@ public class BaseAppTest extends BaseApp {
         wait.until(ExpectedConditions.elementToBeClickable(
                 AppiumBy.androidUIAutomator("new UiSelector().text(\"CANCEL\")"))).click();
 
-        System.out.println("✅ Checkout page reached successfully");
+        System.out.println(" Checkout page reached successfully");
     }
 }
+
