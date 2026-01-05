@@ -37,7 +37,7 @@ public class Mobile_Specific_Actions {
                 .setAppActivity("io.appium.android.apis.ApiDemos")
                 .setIgnoreHiddenApiPolicyError(true)
 
-                // 🔥 CRITICAL FIX
+                // CRITICAL FIX
                 .setNoReset(true);
 
         driver = new AndroidDriver(
@@ -51,14 +51,14 @@ public class Mobile_Specific_Actions {
     @Test
     public void deviceInteractionsTest() {
 
-        // 1️⃣ Verify install
+        //  Verify install
         System.out.println("App installed: " +
                 driver.isAppInstalled("io.appium.android.apis"));
 
-        // 2️⃣ Handle permissions
+        //  Handle permissions
         handlePermissions();
 
-        // 3️⃣ Click Views
+        // Click Views
         WebElement views = wait.until(
                 ExpectedConditions.presenceOfElementLocated(
                         AppiumBy.androidUIAutomator(
@@ -69,11 +69,11 @@ public class Mobile_Specific_Actions {
         views.click();
         System.out.println("Clicked Views");
 
-        // 4️⃣ Background / Foreground
+        //  Background / Foreground
         System.out.println("Sending app to background");
         driver.runAppInBackground(Duration.ofSeconds(3));
 
-        // 5️⃣ Orientation validation (SAFE)
+        // Orientation validation (SAFE)
      // Rotate to landscape
         driver.rotate(ScreenOrientation.LANDSCAPE);
         
@@ -82,10 +82,10 @@ public class Mobile_Specific_Actions {
         driver.rotate(ScreenOrientation.PORTRAIT);
 
 
-        // 6️⃣ Screenshot
+        //  Screenshot
         takeScreenshot("ApiDemos_Test");
 
-        // 7️⃣ Uninstall
+        //  Uninstall
         driver.removeApp("io.appium.android.apis");
         System.out.println("App installed after uninstall: " +
                 driver.isAppInstalled("io.appium.android.apis"));
@@ -124,3 +124,4 @@ public class Mobile_Specific_Actions {
         if (driver != null) driver.quit();
     }
 }
+
