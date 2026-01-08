@@ -57,7 +57,7 @@ public class Mobile_Specific_Actions {
 
         //  Handle permissions
         handlePermissions();
-
+        
         // Click Views
         WebElement views = wait.until(
                 ExpectedConditions.presenceOfElementLocated(
@@ -84,12 +84,58 @@ public class Mobile_Specific_Actions {
 
         //  Screenshot
         takeScreenshot("ApiDemos_Test");
-
+        //push notification validation
+        pushNotificationValidationTest();
         //  Uninstall
         driver.removeApp("io.appium.android.apis");
         System.out.println("App installed after uninstall: " +
                 driver.isAppInstalled("io.appium.android.apis"));
     }
+
+    public void validatePushNotificationHandling() {
+    
+        // Open notification panel
+        driver.openNotifications();
+        System.out.println("Notification panel opened");
+    
+        WebDriverWait notificationWait =
+                new WebDriverWait(driver, Duration.ofSeconds(15));
+    
+        // Locate notification by partial text
+        WebElement notification =
+                notificationWait.until(
+                        ExpectedConditions.presenceOfElementLocated(
+                                AppiumBy.androidUIAutomator(
+                                        "new UiSelector().textContains(\"Api\")"
+                                )
+                        )
+                );
+    
+        // Validate notification content
+        String notificationText = notification.getText();
+        System.out.println("Notification received: " + notificationText);
+    
+        Assert.assertTrue(notificationText.length() > 0,
+                "Notification content is empty");
+    
+        // Tap on notification
+        notification.click();
+        System.out.println("Notification clicked");
+    
+        // Validate app behavior after tapping notification
+        WebElement views =
+                notificationWait.until(
+                        ExpectedConditions.presenceOfElementLocated(
+                                AppiumBy.androidUIAutomator(
+                                        "new UiSelector().text(\"Views\")"
+                                )
+                        )
+                );
+    
+        Assert.assertTrue(views.isDisplayed(),
+                "App did not navigate correctly after notification click");
+    }
+
 
     private void handlePermissions() {
         try {
@@ -124,4 +170,5 @@ public class Mobile_Specific_Actions {
         if (driver != null) driver.quit();
     }
 }
+
 
