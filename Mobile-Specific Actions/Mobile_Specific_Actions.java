@@ -85,7 +85,7 @@ public class Mobile_Specific_Actions {
         //  Screenshot
         takeScreenshot("ApiDemos_Test");
         //push notification validation
-        pushNotificationValidationTest();
+        validatePushNotificationHandling();
         //  Uninstall
         driver.removeApp("io.appium.android.apis");
         System.out.println("App installed after uninstall: " +
@@ -170,5 +170,6 @@ public class Mobile_Specific_Actions {
         if (driver != null) driver.quit();
     }
 }
+
 
 
